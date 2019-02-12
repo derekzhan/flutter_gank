@@ -64,9 +64,9 @@
 | 名称               | 说明               |
 | :----------------- | :----------------- |
 | http               | 网络请求           |
-| transparent_image  | 透明图象           |
+| transparent_image  | 透明图像           |
 | webview_flutter    | WebView            |
-| event_bus          | 事件总线           |
+| event_bus          | 事件分发           |
 | photo_view         | 图片浏览，支持缩放 |
 | objectdb           | 对象数据库         |
 | path_provider      | 查找文件位置       |
