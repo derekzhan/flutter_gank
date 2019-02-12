@@ -54,16 +54,15 @@ class _SmartRefreshListViewState extends State<SmartRefreshListView> {
   @override
   Widget build(BuildContext context) {
     return new EmptyView(
-      status: widget.emptyViewStatus,
-      child: new Container(
-          color: Theme.of(context).backgroundColor,
-          child: new RefreshIndicator(
-              child: new ListView.builder(
-                controller: _scrollController,
-                itemCount: widget.datas.length + 1,
-                itemBuilder: (context, index) => widget.renderList(index),
-              ),
-              onRefresh: widget.onrefresh)),
-    );
+        status: widget.emptyViewStatus,
+        child: new Container(
+            color: Theme.of(context).backgroundColor,
+            child: new RefreshIndicator(
+                child: new ListView.builder(
+                  controller: _scrollController,
+                  itemCount: widget.datas.length + 1,
+                  itemBuilder: (context, index) => widget.renderList(index),
+                ),
+                onRefresh: widget.onrefresh)));
   }
 }
