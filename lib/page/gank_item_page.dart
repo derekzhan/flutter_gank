@@ -5,6 +5,7 @@ import '../util/data_util.dart';
 import '../widget/load_more_view.dart';
 import '../widget/gank_list_item.dart';
 import '../widget/empty_view.dart';
+import '../widget/smart_refresh_listview.dart';
 import '../model/empty_view_status.dart';
 
 class GankItemPage extends StatefulWidget {
@@ -91,18 +92,25 @@ class _GankItemPageState extends State<GankItemPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return new EmptyView(
-      status: _emptyViewStatus,
-      child: new Container(
-          color: Theme.of(context).backgroundColor,
-          child: new RefreshIndicator(
-              child: new ListView.builder(
-                controller: _scrollController,
-                itemCount: _gankInfos.length + 1,
-                itemBuilder: (context, index) => _renderList(index),
-              ),
-              onRefresh: _onRefresh)),
-    );
+    // return new EmptyView(
+    //   status: _emptyViewStatus,
+    //   child: new Container(
+    //       color: Theme.of(context).backgroundColor,
+    //       child: new RefreshIndicator(
+    //           child: new ListView.builder(
+    //             controller: _scrollController,
+    //             itemCount: _gankInfos.length + 1,
+    //             itemBuilder: (context, index) => _renderList(index),
+    //           ),
+    //           onRefresh: _onRefresh)),
+    // );
+
+    return new SmartRefreshListView(
+        datas: this._gankInfos,
+        emptyViewStatus: this._emptyViewStatus,
+        renderList: (index) => this._renderList(index),
+        onrefresh: () async => this._onRefresh(),
+        onLoadMore: () async => this._onLoadMore());
   }
 
   @override
