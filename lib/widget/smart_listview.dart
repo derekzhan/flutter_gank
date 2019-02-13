@@ -14,7 +14,7 @@ class SmartListView extends StatefulWidget {
   /// 缺省View状态
   final EmptyViewStatus emptyViewStatus;
 
-  // 缺省View文案显示
+  /// 缺省View文案显示
   final String emptyViewRemark;
 
   /// 是否启用下拉刷新
@@ -72,6 +72,14 @@ class _SmartListViewState extends State<SmartListView> {
     }
   }
 
+  Widget _buildListView() => ListView.builder(
+        controller: _scrollController,
+        itemCount: widget.loadMoreEnable
+            ? widget.datas.length + 1
+            : widget.datas.length,
+        itemBuilder: (context, index) => widget.renderList(index),
+      );
+
   @override
   Widget build(BuildContext context) {
     return new EmptyView(
@@ -79,15 +87,9 @@ class _SmartListViewState extends State<SmartListView> {
         remark: widget.emptyViewRemark,
         child: new Container(
             color: widget.backgroundColor ?? Theme.of(context).backgroundColor,
-            child: new RefreshIndicator(
-                child: new ListView.builder(
-                  controller: _scrollController,
-                  itemCount: widget.loadMoreEnable
-                      ? widget.datas.length + 1
-                      : widget.datas.length,
-                  itemBuilder: (context, index) => widget.renderList(index),
-                ),
-                onRefresh: () async =>
-                    widget.refreshEnable ? widget.onrefresh() : null)));
+            child: widget.refreshEnable
+                ? new RefreshIndicator(
+                    child: _buildListView(), onRefresh: widget.onrefresh)
+                : _buildListView()));
   }
 }
