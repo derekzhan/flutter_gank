@@ -12,8 +12,8 @@ class StringValues {
   static const String CATEGORY_BREAK_VIDEO = '休息视频';
   static const String DELETE_SUCCESS = '删除成功';
   static const String RETRACT = '撤回';
-  static const String EMPTY_NO_DATA_REMARK = '哎呀 没数据';
-  static const String EMPTY_NO_FAVORITE_DATA_REMARK = '还没有收藏哦';
+  static const String EMPTY_NO_DATA_REMARK = '数据为空';
+  static const String EMPTY_NO_FAVORITE_DATA_REMARK = '还没有收藏';
   static const String FAVORITE_ARTICLE_SUCCESS = '收藏成功';
   static const String CANCEL_FAVORITE_ARTICLE_SUCCESS = '取消收藏成功';
   static const String POST_GANK = '提交干货';
