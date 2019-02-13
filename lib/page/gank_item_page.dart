@@ -4,7 +4,7 @@ import '../model/gank_info.dart';
 import '../util/data_util.dart';
 import '../widget/load_more_view.dart';
 import '../widget/gank_list_item.dart';
-import '../widget/smart_refresh_listview.dart';
+import '../widget/smart_listview.dart';
 import '../model/empty_view_status.dart';
 
 class GankItemPage extends StatefulWidget {
@@ -91,7 +91,7 @@ class _GankItemPageState extends State<GankItemPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return new SmartRefreshListView(
+    return new SmartListView(
         datas: this._gankInfos,
         emptyViewStatus: this._emptyViewStatus,
         renderList: (index) => this._renderList(index),

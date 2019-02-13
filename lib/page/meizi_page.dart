@@ -6,6 +6,7 @@ import '../model/empty_view_status.dart';
 import '../widget/meizi_list_item.dart';
 import '../widget/load_more_view.dart';
 import '../widget/empty_view.dart';
+import '../widget/smart_listview.dart';
 
 class MeiZiPage extends StatefulWidget {
   @override
@@ -83,16 +84,13 @@ class _MeiZiPageState extends State<MeiZiPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return new EmptyView(
-        status: _emptyViewStatus,
-        child: new Container(
-            // color: Theme.of(context).backgroundColor,
-            child: new RefreshIndicator(
-                child: new ListView.builder(
-                    controller: _scrollController,
-                    itemCount: _gankInfos.length + 1,
-                    itemBuilder: (context, index) => _renderList(index)),
-                onRefresh: _onRefresh)));
+    return new SmartListView(
+        datas: this._gankInfos,
+        emptyViewStatus: this._emptyViewStatus,
+        backgroundColor: Colors.white,
+        renderList: (index) => this._renderList(index),
+        onrefresh: () async => this._onRefresh(),
+        onLoadMore: () async => this._onLoadMore());
   }
 
   @override

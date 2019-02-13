@@ -3,7 +3,7 @@ import '../manager/favorite_manager.dart';
 import '../model/gank_info.dart';
 import '../model/empty_view_status.dart';
 import '../widget/gank_list_item.dart';
-import '../widget/empty_view.dart';
+import '../widget/smart_listview.dart';
 import '../manager/bus_manager.dart';
 import '../event/update_favorites_event.dart';
 import '../constant/strings.dart';
@@ -81,16 +81,13 @@ class _FavoritesPageState extends State<FavoritesPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return new EmptyView(
-        status: _emptyViewStatus,
-        // image: ImageValues.EMPTY_VIEW_NO_FAVORITE_IMAGE,
-        remark: StringValues.EMPTY_NO_FAVORITE_DATA_REMARK,
-        child: new Container(
-            color: Theme.of(context).backgroundColor,
-            child: new ListView.builder(
-              itemCount: _gankInfos.length,
-              itemBuilder: (context, index) => _renderList(index),
-            )));
+    return new SmartListView(
+        datas: this._gankInfos,
+        emptyViewStatus: this._emptyViewStatus,
+        emptyViewRemark: StringValues.EMPTY_NO_FAVORITE_DATA_REMARK,
+        refreshEnable: false,
+        loadMoreEnable: false,
+        renderList: (index) => this._renderList(index));
   }
 
   @override

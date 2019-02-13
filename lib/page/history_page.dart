@@ -3,8 +3,8 @@ import '../util/data_util.dart';
 import '../model/history_content_info.dart';
 import '../model/empty_view_status.dart';
 import '../widget/load_more_view.dart';
-import '../widget/empty_view.dart';
 import '../widget/history_content_list_item.dart';
+import '../widget/smart_listview.dart';
 import '../page/detail_page.dart';
 import 'dart:async';
 
@@ -96,17 +96,12 @@ class _HistoryPageState extends State<HistoryPage> {
       leading: const BackButton(),
     );
 
-    final Widget body = new EmptyView(
-        status: _emptyViewStatus,
-        child: Container(
-            color: Theme.of(context).backgroundColor,
-            child: new RefreshIndicator(
-              child: new ListView.builder(
-                  controller: _scrollController,
-                  itemCount: _historyList.length + 1,
-                  itemBuilder: (context, index) => _renderList(context, index)),
-              onRefresh: _onRefresh,
-            )));
+    final Widget body = new SmartListView(
+        datas: this._historyList,
+        emptyViewStatus: this._emptyViewStatus,
+        renderList: (index) => this._renderList(context, index),
+        onrefresh: () async => this._onRefresh(),
+        onLoadMore: () async => this._onLoadMore());
 
     return new Scaffold(appBar: appBar, body: body);
   }
