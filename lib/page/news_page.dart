@@ -70,6 +70,7 @@ class _NewsPageState extends State<NewsPage>
   void _itemPhotoTap(List<String> images) => Navigator.of(context).push(
       MaterialPageRoute(builder: (context) => new PhotoGalleryPage(images)));
 
+  // 构建最新列表中的每个cell
   List<Widget> _buildItem() {
     List<Widget> _widgets = [];
 

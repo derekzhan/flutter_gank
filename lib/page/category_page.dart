@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../model/category_info.dart';
 import '../page/gank_item_page.dart';
 
+/// 分类页面
 class CategoryPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _CategoryPageState();
@@ -42,6 +43,7 @@ class _CategoryPageState extends State<CategoryPage>
             isScrollable: true,
             unselectedLabelColor: Theme.of(context).primaryColor,
             labelColor: Colors.grey[800],
+            /// 指示器
             indicatorSize: TabBarIndicatorSize.label,
             tabs: categorys.map(_buildTab).toList()));
 

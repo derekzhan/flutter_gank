@@ -45,6 +45,7 @@ class SmartListView extends StatefulWidget {
   })  : assert(datas != null),
         assert(emptyViewStatus != null),
         assert(renderList != null);
+
   @override
   createState() => _SmartListViewState();
 }
@@ -72,6 +73,7 @@ class _SmartListViewState extends State<SmartListView> {
     }
   }
 
+  /// itemBuilder 列表构建器 index是列表中的序号. 传递给 回调方法 去渲染列表。
   Widget _buildListView() => ListView.builder(
         controller: _scrollController,
         itemCount: widget.loadMoreEnable

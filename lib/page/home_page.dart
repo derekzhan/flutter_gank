@@ -18,7 +18,7 @@ import '../manager/favorite_manager.dart';
 import '../constant/strings.dart';
 import '../model/user_info.dart';
 import '../widget/placeholder_image_view.dart';
-
+/// 首页
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _HoPageState();

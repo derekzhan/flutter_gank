@@ -3,9 +3,11 @@ import '../widget/placeholder_image_view.dart';
 import '../util/display_util.dart';
 import '../page/photo_gallery_page.dart';
 
+/// 妹子列表项 widget
 class MeiZiListItem extends StatelessWidget {
   final String url;
   final int currentIndex;
+
   MeiZiListItem(this.url, {Key key, @required this.currentIndex})
       : super(key: key);
 
@@ -23,7 +25,9 @@ class MeiZiListItem extends StatelessWidget {
         margin: new EdgeInsets.only(
             top: topSpacing, bottom: spacing, left: spacing, right: spacing),
         child: new Hero(
+            // 动画
             tag: this.url,
+            // 卡片
             child: new Card(
                 margin: const EdgeInsets.all(0.0),
                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -34,6 +38,7 @@ class MeiZiListItem extends StatelessWidget {
                       fit: BoxFit.cover),
                   new Material(
                       type: MaterialType.transparency,
+                      // InkWell 墨水池 水波纹效果
                       child: new InkWell(onTap: () => _onPhotoTap(context)))
                 ]))));
   }
